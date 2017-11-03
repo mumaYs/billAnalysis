@@ -22,7 +22,7 @@ public class DataTransfer {
     public static void copyDataToES(SparkSession spark) {
         // 基站数据：
         JavaRDD<BaseStation> baseStationRDD = spark.read()
-                .textFile(PropertyConstants.getPropertiesKey("hdfs") + "/TEST/*")
+                .textFile(PropertyConstants.getPropertiesKey("hdfs") + "/00DATA/01OUT/00BASE_STATION/*")
                 .javaRDD()
                 .map(line -> {
                     String[] parts = line.split("\t");
