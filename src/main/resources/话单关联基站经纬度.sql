@@ -3,16 +3,16 @@ SELECT
   NVL (T1.other_city, '') other_city,
   NVL (T1.other_location, '') other_location,
   NVL (T1.other_phone, '') other_phone,
-  CASE WHEN find_in_set(substr(trim(other_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动' 
-  WHEN find_in_set(substr(trim(other_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通' 
-  WHEN find_in_set(substr(trim(other_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信' 
+  CASE WHEN find_in_set(substr(trim(T1.other_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动'
+  WHEN find_in_set(substr(trim(T1.other_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通'
+  WHEN find_in_set(substr(trim(T1.other_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信'
   ELSE '未知' END other_operator,
   NVL (T1.own_city, '') own_city,
   NVL (T1.own_location, '') own_location,
   NVL (T1.own_phone, '') own_phone,
-  CASE WHEN find_in_set(substr(trim(own_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动' 
-  WHEN find_in_set(substr(trim(own_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通' 
-  WHEN find_in_set(substr(trim(own_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信' 
+  CASE WHEN find_in_set(substr(trim(T1.own_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动'
+  WHEN find_in_set(substr(trim(T1.own_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通'
+  WHEN find_in_set(substr(trim(T1.own_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信'
   ELSE '未知' END own_operator,
   NVL (T1.own_station_id, '') own_station_id,
   NVL (T1.talk_time, '') talk_time,

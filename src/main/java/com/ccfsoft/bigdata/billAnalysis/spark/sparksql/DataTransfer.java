@@ -52,16 +52,16 @@ public class DataTransfer {
                 "  NVL (T1.other_city, '') other_city,\n" +
                 "  NVL (T1.other_location, '') other_location,\n" +
                 "  NVL (T1.other_phone, '') other_phone,\n" +
-                "  CASE WHEN find_in_set(substr(trim(other_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动' \n" +
-                "  WHEN find_in_set(substr(trim(other_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通' \n" +
-                "  WHEN find_in_set(substr(trim(other_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信' \n" +
+                "  CASE WHEN find_in_set(substr(trim(T1.other_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动' \n" +
+                "  WHEN find_in_set(substr(trim(T1.other_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通' \n" +
+                "  WHEN find_in_set(substr(trim(T1.other_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信' \n" +
                 "  ELSE '未知' END other_operator,\n" +
                 "  NVL (T1.own_city, '') own_city,\n" +
                 "  NVL (T1.own_location, '') own_location,\n" +
                 "  NVL (T1.own_phone, '') own_phone,\n" +
-                "  CASE WHEN find_in_set(substr(trim(own_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动' \n" +
-                "  WHEN find_in_set(substr(trim(own_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通' \n" +
-                "  WHEN find_in_set(substr(trim(own_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信' \n" +
+                "  CASE WHEN find_in_set(substr(trim(T1.own_phone),0,2), '134,135,136,137,138,139,147,150,151,152,157,158,159,178,182,183,184,187,188') > 0 THEN '移动' \n" +
+                "  WHEN find_in_set(substr(trim(T1.own_phone),0,2), '130,131,132,155,156,185,186,145,176') > 0 THEN '联通' \n" +
+                "  WHEN find_in_set(substr(trim(T1.own_phone),0,2), '133,153,177,180,181,189,173,177') > 0 THEN '电信' \n" +
                 "  ELSE '未知' END own_operator,\n" +
                 "  NVL (T1.own_station_id, '') own_station_id,\n" +
                 "  NVL (T1.talk_time, '') talk_time,\n" +
