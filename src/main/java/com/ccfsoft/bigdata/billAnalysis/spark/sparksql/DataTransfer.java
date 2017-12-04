@@ -3,7 +3,6 @@ package com.ccfsoft.bigdata.billAnalysis.spark.sparksql;
 
 import com.ccfsoft.bigdata.billAnalysis.spark.entity.BaseStation;
 import com.ccfsoft.bigdata.utils.PropertyConstants;
-import org.apache.avro.ipc.specific.Person;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;

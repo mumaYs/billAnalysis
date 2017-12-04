@@ -1,4 +1,5 @@
 import com.ccfsoft.bigdata.billAnalysis.arangodb.RelationNetworkAnalyze;
+import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.CellDataToOracle;
 import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.DataTransfer;
 import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.StatisticAnalysis;
 import com.ccfsoft.bigdata.utils.PropertyConstants;
@@ -16,9 +17,9 @@ public class Init {
         // 加载Spark配置
         SparkConf conf = new SparkConf()
                 .setAppName("Bill Analysis For Bei lun")
-                .setMaster("yarn-cluster")
-                .set("es.nodes", PropertyConstants.getPropertiesKey("es.nodes"))
-                .set("es.port", PropertyConstants.getPropertiesKey("es.port"));
+                .setMaster("yarn-cluster");
+//                .set("es.nodes", PropertyConstants.getPropertiesKey("es.nodes"))
+//                .set("es.port", PropertyConstants.getPropertiesKey("es.port"));
 
         SparkSession spark = SparkSession
                 .builder()
@@ -26,8 +27,8 @@ public class Init {
                 .getOrCreate();
 
         //begin_date|begin_time|call_type|other_city|other_location|other_phone|own_city|own_location|own_phone|own_station_id|talk_time|
-        Dataset<Row> df = spark.read().json(PropertyConstants.getPropertiesKey("hdfs") + "/00DATA/00LOCAL/02BILL/BeiLun2017.txt");
-        df.createOrReplaceTempView("BILL");
+//        Dataset<Row> df = spark.read().json(PropertyConstants.getPropertiesKey("hdfs") + "/00DATA/00LOCAL/02BILL/BeiLun2017.txt");
+//        df.createOrReplaceTempView("BILL");
 
 //        //1.sparksql统计分析
 //        StatisticAnalysis.runSparkSQL(spark);
@@ -37,9 +38,12 @@ public class Init {
 //
 //        //3.关系网络入库(ArangoDB)
 //        RelationNetworkAnalyze.relationNetworkAnalyze(spark);
+//
+//        //4.话单数据入ElasticSearch
+//        DataTransfer.copyDataToES(spark);
 
-        //4.话单数据入ElasticSearch
-        DataTransfer.copyDataToES(spark);
+        //5.基站数据入Oracle
+        CellDataToOracle.copyDataToOracle(spark,PropertyConstants.getPropertiesKey("hdfs") + "/00DATA/01OUT/00BASE_STATION/*");
 
         spark.stop();
     }
