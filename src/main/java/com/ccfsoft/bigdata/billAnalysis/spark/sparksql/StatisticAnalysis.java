@@ -11,13 +11,13 @@ import java.util.Properties;
 
 public class StatisticAnalysis {
     public SparkConf conf;
-    
+
     /**
      * SparkSQL 统计分析
      * @param spark
      */
     public static void runSparkSQL(SparkSession spark) {
-        
+
         // 1.话单总量统计
 //        Dataset<Row> tmp = spark.sql("SELECT " +
 //                "begin_date," +
@@ -98,7 +98,7 @@ public class StatisticAnalysis {
         dbWrite(personTalkTimeWk,"BILL_TALKTIME_PERSONAL_WEEK");
         dbWrite(personTalkTimeMon,"BILL_TALKTIME_PERSONAL_MONTH");
     }
-    
+
     /**
      * 将分析结果存入mysql
      * @param data            分析的数据

@@ -2,15 +2,10 @@ package com.ccfsoft.bigdata.billAnalysis.spark.sparksql;
 
 
 import com.ccfsoft.bigdata.billAnalysis.spark.entity.BaseStation;
-import com.ccfsoft.bigdata.utils.PropertyConstants;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
-import org.elasticsearch.spark.sql.api.java.JavaEsSparkSQL;
-
-import java.util.Properties;
 
 /**
  * 数据转移类
@@ -18,7 +13,7 @@ import java.util.Properties;
 public class CellDataToOracle {
 
     /**
-     * 将数据从HDFS存入ES
+     * 将数据从HDFS存入Ora
      * @param spark
      */
     public static void copyDataToOracle(SparkSession spark,String path) {

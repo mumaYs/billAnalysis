@@ -1,18 +1,22 @@
 import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.CellDataToOracle;
 import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.DataTransfer;
+import com.ccfsoft.bigdata.billAnalysis.spark.structuredstreaming.CollectDataToRMDB;
 import com.ccfsoft.bigdata.utils.PropertyConstants;
+import org.apache.avro.ipc.specific.Person;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
+import org.apache.spark.api.java.function.MapFunction;
+import org.apache.spark.sql.*;
 import org.elasticsearch.spark.sql.api.java.JavaEsSparkSQL;
 import org.mortbay.util.ajax.JSON;
 
+import java.io.Serializable;
+import java.util.Arrays;
+
 
 public class InitTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         // 加载Spark配置
         SparkConf conf = new SparkConf()
                 .setAppName("Bill Analysis For Bei lun")
@@ -50,9 +54,23 @@ public class InitTest {
 ////                "FROM BILL T1 LEFT OUTER JOIN BASESTATION T2 on T1.own_station_id=T2.station_id");
 //        //话单数据存入ES
 //        JavaEsSparkSQL.saveToEs(bills, "data/Bill");
-        //5.基站数据入Oracle
-        CellDataToOracle.copyDataToOracle(spark,"F:\\data\\cellinfo_test.txt");
+//        //5.基站数据入Oracle
+//        CellDataToOracle.copyDataToOracle(spark,"F:\\data\\cellinfo_test.txt");
+
+//        CollectDataToRMDB.process(spark);
+
+        // Encoders for most common types are provided in class Encoders
+        Encoder<Integer> integerEncoder = Encoders.INT();
+        Dataset<Integer> primitiveDS = spark.createDataset(Arrays.asList(1, 2, 3), integerEncoder);
+        Dataset<Integer> transformedDS = primitiveDS.map(
+                (MapFunction<Integer, Integer>) value -> value + 1,
+                integerEncoder);
+        transformedDS.collect(); // Returns [2, 3, 4]
+
+
 
         spark.stop();
     }
+
+
 }

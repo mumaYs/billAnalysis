@@ -1,11 +1,6 @@
-import com.ccfsoft.bigdata.billAnalysis.arangodb.RelationNetworkAnalyze;
 import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.CellDataToOracle;
-import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.DataTransfer;
-import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.StatisticAnalysis;
 import com.ccfsoft.bigdata.utils.PropertyConstants;
 import org.apache.spark.SparkConf;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
 /**
@@ -43,7 +38,7 @@ public class Init {
 //        DataTransfer.copyDataToES(spark);
 
         //5.基站数据入Oracle
-        CellDataToOracle.copyDataToOracle(spark,PropertyConstants.getPropertiesKey("hdfs") + "/00DATA/01OUT/00BASE_STATION/*");
+        CellDataToOracle.copyDataToOracle(spark,PropertyConstants.getPropertiesKey("hdfs") + "/DATA/OUT/00BASE_STATION/*");
 
         spark.stop();
     }
