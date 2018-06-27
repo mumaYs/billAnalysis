@@ -10,7 +10,9 @@ import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.*;
 import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.types.StructType;
+import org.codehaus.jettison.mapped.MappedXMLInputFactory;
 import scala.Tuple2;
+import static org.apache.spark.sql.functions.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -29,9 +31,6 @@ public class SparkTest {
                 .config(conf)
                 .getOrCreate();
 
-//        Dataset<Row> df = spark.read().json("E:\\TMP\\11.json");
-//        df.schema();
-//        df.show();
 //        // spark读取json数组解析成Dataset<Row>
 //        JavaRDD<Bill> dataRDD =spark.read()
 //                .textFile("E:\\TMP\\123.json")
