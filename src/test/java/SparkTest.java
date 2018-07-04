@@ -1,23 +1,7 @@
-import com.alibaba.fastjson.JSON;
-import com.ccfsoft.bigdata.billAnalysis.spark.entity.BaseStation;
-import com.ccfsoft.bigdata.billAnalysis.spark.entity.TestEntity;
-import com.ccfsoft.bigdata.billAnalysis.spark.sparksql.StatisticAnalysis;
-import com.ccfsoft.bigdata.utils.PropertyConstants;
-import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.api.java.function.MapFunction;
-import org.apache.spark.sql.*;
-import org.apache.spark.sql.streaming.StreamingQuery;
-import org.apache.spark.sql.types.StructType;
-import org.codehaus.jettison.mapped.MappedXMLInputFactory;
-import scala.Tuple2;
-import static org.apache.spark.sql.functions.*;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.ccfsoft.bigdata.billAnalysis.spark.entity.TestEntity;
+import org.apache.spark.SparkConf;
+import org.apache.spark.sql.*;
 
 
 public class SparkTest {

@@ -83,7 +83,7 @@ public class RowAndCol {
         /**
          * 单列转多行
          */
-        spark.sql("select A,B,size from test2 t lateral view explode(split(sizes,',')) t2 as size").show();
+        spark.sql("select A,B,size from test2 t lateral view explode(split(sizes,',')) as size").show();
 
         spark.stop();
     }
