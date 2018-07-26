@@ -18,7 +18,7 @@ public class RowAndCol {
                 .getOrCreate();
 
         /**
-         * Pivot（多行转多列）功能测试，spark暂不支持unpivot,但可以通过casewhen和union较烦实现功能
+         * Pivot（多行转多列）功能测试
          */
         /*
         原始数据：
@@ -84,6 +84,11 @@ public class RowAndCol {
          * 单列转多行
          */
         spark.sql("select A,B,size from test2 t lateral view explode(split(sizes,',')) as size").show();
+
+        /**
+         * TODO：多列转多行
+         * spark暂不支持unpivot,但可以通过casewhen和union较烦实现功能
+         */
 
         spark.stop();
     }
